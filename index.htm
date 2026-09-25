@@ -1,0 +1,610 @@
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HW | جلسات اولیه وب</title>
+
+    <link href="/assets/styles/css/googleapis-fonts.css" rel="stylesheet" />
+
+    <link href="/assets/styles/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/styles/vendor/perfect-scrollbar.css">
+    <link rel="stylesheet" href="/assets/styles/css/themes/lite-blue.min.css">
+    <!-- <link rel="stylesheet" href="assets/styles/css/bootstrap-rtl.min.css"> -->
+
+    <link href="/assets/styles/css/sweetalert.css" rel="stylesheet" />
+
+    <script src="/assets/js/sweetalert.js"></script>
+    <link rel="stylesheet" href="/assets/styles/vendor/toastr.css">
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.png">
+
+
+    <style>
+        @font-face {
+            font-family: yekan;
+            src: url(../assets/fonts/Yekan.ttf);
+        }
+
+        @font-face {
+            font-family: sans;
+            src: url(../assets/fonts/sans.ttf);
+        }
+
+        @font-face {
+            font-family: koodak;
+            src: url(../assets/fonts/koodak.ttf);
+        }
+
+        @font-face {
+            font-family: homa;
+            src: url(../assets/fonts/homa.ttf);
+        }
+
+        @font-face {
+            font-family: iy;
+            src: url(../assets/fonts/iy.woff);
+        }
+
+        @font-face {
+            font-family: danab;
+            src: url(../assets/fonts/danab.woff2);
+        }
+
+        body {
+            font-family: danab;
+        }
+
+        .sweet-alert {
+            font-size: 15px;
+            font-family: 'yekan';
+            direction: rtl;
+            text-align: center;
+        }
+
+        .swal-text {
+            direction: rtl;
+            text-align: center;
+        }
+
+        .center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+
+
+
+
+        .userimg {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+            .userimg:hover {
+                opacity: 0.7;
+            }
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 10; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        }
+
+        /* Modal Content (image) */
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        /* Caption of Modal Image */
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+
+        /* Add Animation */
+        .modal-content, #caption {
+            -webkit-animation-name: zoom;
+            -webkit-animation-duration: 0.6s;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @-webkit-keyframes zoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(0)
+            }
+
+            to {
+                transform: scale(1)
+            }
+        }
+
+        /* The Close Button */
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #bbb;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        /* 100% Image Width on Smaller Screens */
+        @media only screen and (max-width: 700px) {
+            .modal-content {
+                width: 80%;
+            }
+        }
+    </style>
+
+</head>
+
+<body class="text-left">
+    <input name="__RequestVerificationToken" type="hidden" value="NuiAviTKToI-76iseR24tCfBK4RtyZBa_9impvobjqF5IvEIzZ1Wyw5j61KxaOIWAf3RhPvEFFiRjIY3eVad00A2_is1" />
+
+
+    <div id="myModal" class="modal" onclick="closeimgmodal()">
+
+        <img class="modal-content" id="modalimg">
+
+    </div>
+
+
+
+
+    <div class='loadscreen' id="preloader">
+
+        <div class="loader spinner-bubble spinner-bubble-primary">
+
+
+
+        </div>
+    </div>
+
+
+    <div class=" app-admin-wrap layout-sidebar-large">
+        <div class="main-header">
+            <div class="logo">
+                <img src="/assets/images/logo.png" />
+            </div>
+
+            <div class="menu-toggle">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <div class="d-flex align-items-center">
+                <!-- Mega menu -->
+                <!-- / Mega menu -->
+
+            </div>
+
+            <div style="margin: auto"></div>
+
+            <div class="header-part-right">
+                <!-- Full screen toggle -->
+                <i class="i-Full-Screen header-icon d-none d-sm-inline-block" data-fullscreen></i>
+
+
+                <!-- Notificaiton -->
+                <div class="dropdown">
+                    <div class="badge-top-container" role="button" id="dropdownNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="badge badge-primary"></span>
+                        <i class="i-Bell text-muted header-icon"></i>
+                    </div>
+                    <!-- Notification dropdown -->
+
+                </div>
+                <!-- Notificaiton End -->
+                <!-- User avatar dropdown -->
+                <div class="dropdown">
+                    <div class="user col align-self-end">
+                        <img src="http://dl.englishstorybooks.com/hwpi/def.jpg" id="userDropdown" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                            <div class="dropdown-header">
+                                <i class="i-Lock-User mr-1"></i> الهه دهقان
+                            </div>
+                            <a href="/Home/myprofile" class="dropdown-item">اطلاعات شخصی</a>
+                            <a href="/Home/myprojects" class="dropdown-item">پروژه های من</a>
+                            <a href="/Home/signout" class="dropdown-item" href="signin.html">خروج</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- header top menu end -->
+
+        <div class="side-content-wrap">
+            <div class="sidebar-left open rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
+                <ul class="navigation-left">
+                    <li class="nav-item" data-item="dashbord">
+                        <a class="nav-item-hold" href="/Home/index">
+                            <i class="nav-icon i-Bar-Chart"></i>
+                            <span class="nav-text">جلسات اولیه وب</span>
+                        </a>
+                        <div class="triangle"></div>
+                    </li>
+
+
+
+                    <li class="nav-item" data-item="support">
+                        <a class="nav-item-hold" href="/Home/sup">
+                            <i class="nav-icon i-Support"></i>
+                            <span class="nav-text">پشتیبانی</span>
+                        </a>
+                        <div class="triangle"></div>
+                    </li>
+
+
+
+                    <li class="nav-item" data-item="curses">
+                        <a class="nav-item-hold" href="/Home/curses">
+                            <i class="nav-icon i-Atom"></i>
+                            <span class="nav-text">سایر دوره ها</span>
+                        </a>
+                        <div class="triangle"></div>
+                    </li>
+
+
+
+
+                    <li class="nav-item" data-item="uikits">
+                        <a class="nav-item-hold" href="/Home/myprofile">
+                            <i class="nav-icon i-Library"></i>
+                            <span class="nav-text">اطلاعات شخصی</span>
+                        </a>
+                        <div class="triangle"></div>
+                    </li>
+                    <li class="nav-item" data-item="extrakits">
+                        <a class="nav-item-hold" href="/Home/myprojects">
+                            <i class="nav-icon i-Suitcase"></i>
+                            <span class="nav-text">پروژه های من</span>
+                        </a>
+                        <div class="triangle"></div>
+                    </li>
+
+
+                    
+
+
+                    <li class="nav-item" data-item="apps">
+                        <a class="nav-item-hold" href="/Home/comments">
+                            <i class="nav-icon i-Computer-Secure"></i>
+                            <span class="nav-text">نظرات هنرجویان</span>
+                        </a>
+                        <div class="triangle"></div>
+                    </li>
+
+                   
+
+                    <li class="nav-item justus" data-item="widget2">
+                        <a class="nav-item-hold" href="/Home/supfilm">
+                            <i class="nav-icon i-Teacher"></i>
+                            <span class="nav-text">فیلم پشتیبانی</span>
+                        </a>
+                        <div class="triangle"></div>
+                    </li>
+
+
+
+                    <li class="nav-item" data-item="widget3">
+                        <a class="nav-item-hold" href="/Home/ballance">
+                            <i class="nav-icon i-Bank"></i>
+                            <span class="nav-text">مالی</span>
+                        </a>
+                        <div class="triangle"></div>
+                    </li>
+
+
+
+
+
+
+                </ul>
+            </div>
+
+
+            <div class="sidebar-overlay"></div>
+        </div>
+        <!--=============== Left side End ================-->
+        <!-- ============ Body content start ============= -->
+        <div class="main-content-wrap sidenav-open d-flex flex-column">
+            <div class="breadcrumb">
+                <h1>Card metrics</h1>
+                <ul>
+                    <li><a href="">UI Kits</a></li>
+                    <li>Card metrics</li>
+                </ul>
+            </div>
+            <div class="separator-breadcrumb border-top"></div>
+            <br />
+            <h1 id="header">جلسات اولیه وب</h1>
+
+
+            
+
+
+
+<div style="text-align:center;font-size:18px;margin-bottom:20px"><a style="margin:5px" href="/Home/supfilm" class="btn btn-primary justus">فیلم پشتیبانی</a><a style="margin:5px" href="/Home/sup" class="btn btn-success">پشتیبانی(هر روز بررسی شود)</a></div>
+
+<div class="list-group" style="text-align:center;font-size:18px">
+    <h4 style="color:red">تا جلسه 4 به هاست نیازی ندارید. پس از انجام تمرین جلسه سه قبل از تهیه هاست با پشتیبان مشورت کنید که هاست اشتباه خریداری نکنید.</h4>
+
+
+
+
+</div>
+
+
+<div class="list-group" style="text-align:center;font-size:18px" id="ses">
+    <h4 style="color:red">تا جلسه 4 به هاست نیازی ندارید. پس از انجام تمرین جلسه سه قبل از تهیه هاست با پشتیبان مشورت کنید که هاست اشتباه خریداری نکنید.</h4>
+
+    
+    
+
+</div>
+
+
+
+
+
+
+
+
+
+        </div>
+        <!-- ============ Body content End ============= -->
+    </div>
+
+
+    <script src="/assets/js/vendor/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/vendor/perfect-scrollbar.min.js"></script>
+    <script src="/assets/js/es5/script.min.js"></script>
+    <script src="/assets/js/es5/sidebar.large.script.min.js"></script>
+    <script src="/assets/js/vendor/toastr.min.js"></script>
+    <script src="/assets/js/form.validation.script.js"></script>
+
+    <script src="/assets/js/angular/angular2.js"></script>
+
+    <script src="/assets/js/angular/angular-route2.js"></script>
+
+
+    
+
+    <script>
+        $(document).ready(function () {
+
+            var token = $('input[name="__RequestVerificationToken"]').val();
+
+            $.post("/Home/getsessions", { __RequestVerificationToken: token })
+
+                .done(function (res) {
+
+                    $("#ses").empty();
+
+
+                    for (var item in res) {
+
+                        $("#ses").append(
+                            '<a href="#" class="list-group-item list-group-item-action list-group-item-info" onclick="getlink(this.innerHTML)">'+res[item].Name+'</a>'
+
+
+                        );
+
+                    }
+
+
+
+                })
+
+                .fail(function () {
+
+
+
+                })
+
+                .always(function () {
+
+                    fd();
+                });
+
+
+            $(document).on("click", ".list-group-item", function () {
+
+                fi();
+              
+                var token = $('input[name="__RequestVerificationToken"]').val();
+
+                $.post("/Home/getlink", { name: $(this).html(), __RequestVerificationToken: token })
+
+                    .done(function (res) {
+
+
+                        if (res.status != 1) {
+
+                            swal("توجه", res.blink, "info");
+
+                            if (res.status == 5) {
+                                setTimeout(function () { window.location.href = "/Home/login" }, 2000);
+                            }
+
+                        }
+
+                        else if (res.status == 1) {
+                            toastr.info("لینک دانلود با موفقیت دریافت شد و باید در حال حاضر دانلود شروع شده باشد. در غیر اینصورت اطلاع دهید.", "توجه")
+                            $("#credit").html(res.charge);
+                            window.location.href = res.blink;
+                        }
+
+
+
+                    })
+
+                    .fail(function () {
+
+
+
+                    })
+
+                    .always(function () {
+
+                     
+
+                        
+                        fd();
+                    });
+
+            });
+
+
+
+        });
+
+
+
+    </script>
+
+
+    <script>
+        var a = 'li:contains(' + 'جلسات اولیه وب' + ')';
+
+
+
+            $(a).addClass("active");
+    $(".nav-item").mouseleave(function () {
+        $(".nav-item").removeClass("active");
+            $(a).addClass("active");
+    });
+
+
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+        var username = 'الهه دهقان';
+        var img = 'http://dl.englishstorybooks.com/hwpi/def.jpg';
+    var gethost = '500000';
+        //alert(gethost);
+
+       if (gethost <= 299000) { $(".justus").remove();}
+
+        $(document).ready(function () {
+
+            if (username == "no" || img == "no") {
+                var token = $('input[name="__RequestVerificationToken"]').val();
+                $.post("/Home/setname", { __RequestVerificationToken: token })
+                    .done(function (res) {
+
+                        if (res.state) {
+                            window.location.reload();
+                        }
+                        else {
+                            alert(res.m);
+                        }
+
+                    })
+                    .fail(function () {
+                        alert("خطا در دریافت نام و عکس. صفحه را رفرش کنید");
+                    });
+
+
+            }
+
+        });
+
+
+    </script>
+    <script>
+        // Get the modal
+        $(document).ready(function () {
+
+            $(document).on("click", ".userimg", function () {
+
+
+                var modal = document.getElementById("myModal");
+                var modalImg = document.getElementById("modalimg");
+                //   Get the image and insert it inside the modal - use its "alt" text as a caption
+
+
+
+                modal.style.display = "block";
+                modalImg.src = this.src;
+
+
+
+                // Get the <span> element that closes the modal
+
+            });
+
+
+
+        });
+
+        function closeimgmodal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
